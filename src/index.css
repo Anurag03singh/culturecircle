@@ -1,0 +1,198 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI Outfit Recommendation System Design System
+   Editorial fashion aesthetic with warm neutrals
+   All colors in HSL format
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Core palette - Warm neutral fashion */
+    --background: 0 0% 96%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    /* Charcoal primary for sophistication */
+    --primary: 0 0% 15%;
+    --primary-foreground: 0 0% 98%;
+
+    /* Warm cream secondary */
+    --secondary: 40 30% 95%;
+    --secondary-foreground: 0 0% 15%;
+
+    /* Muted tones */
+    --muted: 30 10% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Terracotta accent for warmth */
+    --accent: 15 60% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    /* Status colors */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Borders and inputs */
+    --border: 30 10% 88%;
+    --input: 30 10% 88%;
+    --ring: 15 60% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens for outfit cards */
+    --card-hover: 0 0% 98%;
+    --score-excellent: 142 70% 45%;
+    --score-good: 48 95% 50%;
+    --score-average: 25 90% 55%;
+    
+    /* Sidebar */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 20%;
+    --sidebar-primary: 0 0% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 30 20% 95%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 30 10% 90%;
+    --sidebar-ring: 15 60% 55%;
+
+    /* Typography */
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+  }
+
+  .dark {
+    --background: 0 0% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 12%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 10%;
+
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 18%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 15 60% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 15 60% 55%;
+
+    --card-hover: 0 0% 15%;
+    --sidebar-background: 0 0% 10%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 15 60% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 15 60% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .product-card {
+    @apply bg-card rounded-lg overflow-hidden transition-all duration-300;
+  }
+
+  .product-card:hover {
+    @apply shadow-lg;
+    background: hsl(var(--card-hover));
+    transform: translateY(-2px);
+  }
+
+  .score-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+
+  .score-excellent {
+    background: hsl(var(--score-excellent) / 0.15);
+    color: hsl(var(--score-excellent));
+  }
+
+  .score-good {
+    background: hsl(var(--score-good) / 0.15);
+    color: hsl(142 70% 35%);
+  }
+
+  .score-average {
+    background: hsl(var(--score-average) / 0.15);
+    color: hsl(var(--score-average));
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-subtle {
+    animation: pulseSubtle 2s ease-in-out infinite;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
